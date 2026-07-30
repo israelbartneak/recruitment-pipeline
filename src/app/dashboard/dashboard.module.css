@@ -1,0 +1,586 @@
+/* src/app/dashboard/dashboard.module.css */
+.container { 
+  width: 100%; 
+  background-color: var(--bg-main); 
+}
+
+.header { 
+  margin-bottom: 1.5rem; 
+}
+
+.header h1 { 
+  font-size: 1.85rem; 
+  color: var(--text-main); 
+  font-weight: 700; 
+  margin: 0;
+}
+
+/* GRID PRINCIPAL: 2.3fr vs 1fr com alinhamento vertical forçado */
+.dashboardGrid { 
+  display: grid; 
+  grid-template-columns: 2.3fr 1fr; 
+  gap: 1.5rem; 
+  align-items: stretch;
+}
+
+@media (max-width: 1024px) { 
+  .dashboardGrid { 
+    grid-template-columns: 1fr; 
+  } 
+}
+
+.leftColumn { 
+  display: flex; 
+  flex-direction: column;
+  height: 100%;
+}
+
+.rightColumn { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 1.25rem; 
+}
+
+/* CARD DE MÉTRICAS (LADO ESQUERDO) - EXPANDIDO */
+.metricsCard {
+  background-color: var(--bg-card); 
+  border-radius: var(--border-radius); 
+  border: 1px solid var(--border-color); 
+  padding: 1.5rem; 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardHeader, .cardHeaderWithActions { 
+  margin-bottom: 1rem; 
+  border-bottom: 1px solid #f1f5f9; 
+  padding-bottom: 0.75rem; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+.cardHeader h2 { 
+  font-size: 0.85rem; 
+  font-weight: 700; 
+  color: var(--text-main); 
+  letter-spacing: 0.05em; 
+  margin: 0;
+}
+
+.subTitle { 
+  font-size: 0.8rem; 
+  font-weight: 700; 
+  color: var(--text-muted); 
+  display: block; 
+  margin-bottom: 1rem; 
+}
+
+/* GRÁFICO DE BARRAS EXPANDIDO PARA ACOMPANHAR A ALTURA */
+.barChartContainer { 
+  display: flex; 
+  height: 280px; /* Aumentado para preencher a altura vertical */
+  border-bottom: 2px solid var(--border-color); 
+  margin-top: 1rem; 
+}
+
+.chartYAxis { 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  height: 100%; 
+  font-size: 0.75rem; 
+  color: var(--text-muted); 
+  width: 45px; 
+  padding-right: 10px; 
+  border-right: 1px dashed var(--border-color); 
+}
+
+.barChart { 
+  flex: 1; 
+  display: flex; 
+  justify-content: space-around; 
+  align-items: flex-end; 
+  height: 100%; 
+}
+
+.barWrapper { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  width: 15%; 
+  height: 100%; 
+  justify-content: flex-end; 
+}
+
+.bar { 
+  width: 100%; 
+  background-color: #1e3a8a;
+  border-radius: 4px 4px 0 0; 
+  transition: height 0.3s ease;
+}
+
+.barLabel { 
+  font-size: 0.75rem; 
+  color: var(--text-muted); 
+  margin-top: 8px; 
+  white-space: nowrap; 
+}
+
+.divider { 
+  border: 0; 
+  border-top: 1px solid var(--border-color); 
+  margin: 1.25rem 0; 
+}
+
+/* GRÁFICO DE PIZZA / DONUT */
+.pieChartContainer { 
+  display: flex; 
+  align-items: center; 
+  gap: 2rem; 
+  margin-top: 0.75rem; 
+}
+
+.pieChart { 
+  width: 130px; 
+  height: 130px; 
+  border-radius: 50%; 
+  background: conic-gradient(#1e3a8a 0% 100%); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.pieCenter { 
+  width: 65px; 
+  height: 65px; 
+  background-color: var(--bg-card); 
+  border-radius: 50%; 
+}
+
+.pieLegend { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.5rem; 
+}
+
+.legendItem { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  font-size: 0.85rem; 
+  color: #334155; 
+}
+
+.legendDot { 
+  width: 10px; 
+  height: 10px; 
+  border-radius: 50%; 
+}
+
+/* WIDGET DO CALENDÁRIO + DAY TASKS (DIREITO SUPERIOR) */
+.calendarWidgetCard {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.miniCalendarBox {
+  flex: 1;
+  padding: 1.25rem;
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.monthTitle {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: 0.05em;
+}
+
+.headerRightActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navBtns {
+  display: flex;
+  gap: 4px;
+}
+
+.navBtn {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.navBtn:hover {
+  background-color: #f1f5f9;
+  color: var(--text-main);
+}
+
+.toggleTimelineBtn {
+  background-color: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.toggleTimelineBtn:hover {
+  background-color: #f1f5f9;
+  color: var(--text-main);
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+}
+
+.dayLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+.emptyCell {
+  height: 32px;
+}
+
+.dayCell {
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.dayCell:hover {
+  background-color: #f1f5f9;
+}
+
+.selectedDay {
+  background-color: #FE5102 !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(254, 81, 2, 0.3);
+}
+
+/* DAY TASKS (TIMELINE RETRÁTIL) */
+.dayScheduleBox {
+  width: 180px;
+  border-left: 1px solid var(--border-color);
+  background-color: #fffaf8;
+  display: flex;
+  flex-direction: column;
+}
+
+.scheduleHeader {
+  padding: 0.85rem 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 700;
+  font-size: 0.72rem;
+  color: #475569;
+  text-align: center;
+  background-color: #f8fafc;
+  letter-spacing: 0.04em;
+}
+
+.timelineScroll {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 230px;
+  position: relative;
+}
+
+.timeSlot {
+  height: 40px;
+  border-bottom: 1px solid #f1f5f9;
+  position: relative;
+  padding: 2px 4px 2px 42px;
+}
+
+.timeLabel {
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.eventBlock {
+  background: #ffffff;
+  border-left: 3px solid #FE5102;
+  border-radius: 3px;
+  padding: 2px 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.eventBlock strong {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eventBlock p {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.currentTimeIndicator {
+  position: relative;
+  width: 100%;
+}
+
+.orangeLine {
+  height: 2px;
+  background-color: #FE5102;
+  width: 100%;
+}
+
+/* CARD DE ATIVIDADES (DIREITO INFERIOR - ALTURA MÍNIMA FIXADA PARA 4 ITENS) */
+.activitiesCard {
+  background-color: var(--bg-card); 
+  border-radius: var(--border-radius); 
+  border: 1px solid var(--border-color); 
+  padding: 1.25rem 1.5rem; 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  min-height: 280px; /* Garante espaço para exibir as 4 atividades sem rolar */
+  display: flex;
+  flex-direction: column;
+}
+
+.leftTabZone {
+  display: flex;
+  gap: 6px;
+}
+
+.tabBtn {
+  background: none;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+}
+
+.activeTab {
+  color: var(--text-main);
+  background-color: #f1f5f9;
+}
+
+.rightActionZone {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.teamFilterInline {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #f8fafc;
+  border: 1px solid var(--border-color);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+}
+
+.memberSelect {
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  color: #1e3a8a;
+  outline: none;
+  cursor: pointer;
+  font-size: 0.72rem;
+}
+
+.activitiesList { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 8px; 
+  flex: 1;
+}
+
+.activityItem { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 8px 0; 
+  border-bottom: 1px solid #f1f5f9; 
+}
+
+.activityItem:last-child {
+  border-bottom: none;
+}
+
+.activityContent { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+}
+
+.activityText { 
+  font-size: 0.82rem; 
+  color: var(--text-main); 
+  font-weight: 500;
+  margin: 0; 
+}
+
+.assigneeSub {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.activityMeta { 
+  font-size: 0.75rem; 
+  color: var(--text-muted); 
+}
+
+.addBtn { 
+  background-color: #1e3a8a; 
+  color: #ffffff; 
+  border: none; 
+  width: 22px; 
+  height: 22px; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  cursor: pointer; 
+  transition: background-color 0.15s ease;
+}
+
+.addBtn:hover {
+  background-color: #172554;
+}
+
+.emptyActivities {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 20px;
+  font-size: 0.82rem;
+}
+
+/* VISÃO DE ANO */
+.yearView {
+  margin-top: 4px;
+}
+
+.yearNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.yearLabel {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-main);
+  min-width: 50px;
+  text-align: center;
+}
+
+.monthsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.monthCell {
+  height: 44px;
+  border: 1px solid var(--border-color);
+  background: #f8fafc;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.monthCell:hover {
+  background-color: #f1f5f9;
+}
+
+.selectedMonth {
+  background-color: #FE5102 !important;
+  border-color: #FE5102 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(254, 81, 2, 0.3);
+}
+
+/* ARRASTAR ATIVIDADES */
+.dragHandle {
+  color: #cbd5e1;
+  cursor: grab;
+  flex-shrink: 0;
+}
+
+.activityItem[draggable="true"]:hover .dragHandle {
+  color: #94a3b8;
+}
+
+.completeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+}
