@@ -43,7 +43,7 @@
   color: var(--text-main);
 }
 
-.clientLogo {
+.candidatePhoto {
   width: 72px;
   height: 72px;
   border-radius: 50%;
@@ -51,39 +51,11 @@
   flex-shrink: 0;
 }
 
-.clientLogoFallback {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background-color: #0c4a6e;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.titleRow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.titleRow h1 {
+.headerLeft h1 {
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--text-main);
   margin: 0;
-}
-
-.statusBadge {
-  font-size: 0.68rem;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 20px;
 }
 
 .locationRow {
@@ -97,16 +69,25 @@
 
 .tagsRow {
   display: flex;
+  align-items: center;
   gap: 6px;
   margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.tagsLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-right: 2px;
 }
 
 .tag {
   background: #f1f5f9;
   color: #334155;
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 4px 10px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 3px 8px;
   border-radius: 6px;
 }
 
@@ -121,9 +102,6 @@
   font-size: 0.8rem;
   cursor: pointer;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
 .editBtn:hover {
@@ -136,6 +114,7 @@
   margin-top: 1.25rem;
   padding-top: 0.85rem;
   border-top: 1px solid #f1f5f9;
+  flex-wrap: wrap;
 }
 
 .tabBtn {
@@ -179,9 +158,6 @@
 }
 
 .cardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid #f1f5f9;
@@ -192,40 +168,6 @@
   font-weight: 700;
   color: var(--text-main);
   margin: 0;
-}
-
-.smallEditBtn {
-  background: #f8fafc;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  padding: 5px 12px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: #475569;
-  cursor: pointer;
-}
-
-.smallEditBtn:hover {
-  background-color: #f1f5f9;
-  color: var(--text-main);
-}
-
-.addContactBtn {
-  background-color: #1e3a8a;
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  padding: 5px 12px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.addContactBtn:hover {
-  background-color: #172554;
 }
 
 .infoList {
@@ -239,69 +181,77 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.8rem;
+  gap: 12px;
 }
 
 .label {
   color: var(--text-muted);
+  flex-shrink: 0;
 }
 
 .value {
   font-weight: 600;
   color: #334155;
+  text-align: right;
 }
 
-.websiteLink {
+.linkedinLink {
   font-weight: 600;
   color: #1e3a8a;
   text-decoration: underline;
+  text-align: right;
+  word-break: break-all;
 }
 
-.websiteLink:hover {
+.linkedinLink:hover {
   color: var(--primary);
 }
 
-/* CONTACTS */
-.contactsList {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.contactCard {
-  border: 1px solid #f1f5f9;
+.videoRow {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  padding: 10px 12px;
+  padding: 12px;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.contactCardTop {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 4px;
+  gap: 12px;
 }
 
-.contactName {
-  font-size: 0.82rem;
+.playBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #1e3a8a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.videoLabel {
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--text-main);
 }
 
-.contactRole {
-  background: #f1f5f9;
-  color: #475569;
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 10px;
-  flex-shrink: 0;
+.videoDuration {
+  font-size: 0.72rem;
+  color: var(--text-muted);
 }
 
-.contactDetail {
-  font-size: 0.75rem;
-  color: var(--text-muted);
+.skillsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skillTag {
+  background: #fff7ed;
+  color: #c2410c;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
 }
 
 .placeholderTab {
@@ -314,103 +264,206 @@
   font-size: 0.9rem;
 }
 
-.jobsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
+/* =========================================================
+   RESUME
+   ========================================================= */
 
-.jobCard {
+.resumeViewerCard {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  padding: 1rem;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
 
-.jobCardHeader {
+/* Área principal do conteúdo do currículo */
+.resumeContentArea {
+  flex: 1;
+  display: flex;
+}
+
+/* Estado exibido quando não existe currículo */
+.resumeEmptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 10px;
+  padding: 2rem;
+}
+
+.resumeEmptyIcon {
+  color: #cbd5e1;
+}
+
+.resumeEmptyText {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.uploadResumeBtn {
+  background-color: #1e3a8a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  height: 38px;
+  padding: 0 18px;
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.uploadResumeBtn:hover {
+  background-color: #172554;
+}
+
+/* Toolbar do visualizador de currículo */
+.resumeToolbar {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 0.75rem;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-color);
+  background: #f8fafc;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
-.jobIconBox {
-  width: 38px;
-  height: 38px;
-  background-color: #1d4ed8;
-  color: #ffffff;
-  border-radius: 8px;
+.resumeToolbarIcon {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-}
-
-.jobCardInfo {
-  flex: 1;
-  min-width: 0;
-}
-
-.jobCardInfo h4 {
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.jobCardInfo span {
-  font-size: 0.7rem;
   color: var(--text-muted);
+  cursor: pointer;
 }
 
-.jobStageBadge {
-  font-size: 0.62rem;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 20px;
-  flex-shrink: 0;
-  white-space: nowrap;
+.resumeToolbarIcon:hover {
+  color: var(--text-main);
 }
 
-.jobCardBody {
-  border-top: 1px solid #f1f5f9;
-  padding-top: 0.7rem;
+.resumeSearchWrapper {
+  flex: 1;
+  max-width: 240px;
+}
+
+.resumeSearchInput {
+  width: 100%;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  font-size: 0.78rem;
+  outline: none;
+}
+
+.resumeSearchInput:focus {
+  border-color: var(--primary);
+}
+
+.resumePageIndicator {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #334155;
+  margin-left: auto;
+}
+
+.resumeIframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+}
+
+/* Barra lateral de ações do currículo */
+.resumeActionsBar {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 6px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.jobCardBody .infoLine {
-  font-size: 0.72rem;
+.resumeActionIcon {
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #334155;
+  cursor: pointer;
 }
 
-.emptyJobs {
-  grid-column: 1 / -1;
-  text-align: center;
-  color: var(--text-muted);
-  padding: 2rem;
-  font-size: 0.85rem;
+.resumeActionIcon:hover {
+  background-color: #f1f5f9;
 }
 
-/* MEETINGS — TOOLBAR */
-.meetingsToolbarRow {
+/* Ícone desabilitado */
+.resumeActionIcon:disabled {
+  color: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.resumeActionIcon:disabled:hover {
+  background-color: transparent;
+}
+
+/* Ação perigosa, como excluir currículo */
+.resumeActionDanger {
+  color: #dc2626;
+}
+
+.resumeActionDanger:hover {
+  background-color: #fee2e2;
+}
+
+.resumeActionDanger:disabled {
+  color: #cbd5e1;
+}
+
+/* JOBS */
+.jobsToolbarRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1.1rem;
   gap: 1rem;
 }
 
-.meetingsSearchWrapper {
+.resultsCount {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 1rem 4px;
+}
+
+.jobsSearchWrapper {
   position: relative;
   max-width: 320px;
   flex: 1;
 }
 
-.meetingsSearchIcon {
+.jobsSearchIcon {
   position: absolute;
   left: 14px;
   top: 50%;
@@ -418,7 +471,7 @@
   color: #94a3b8;
 }
 
-.meetingsSearchInput {
+.jobsSearchInput {
   width: 100%;
   height: 40px;
   padding: 0 14px 0 42px;
@@ -431,11 +484,11 @@
   transition: border-color 0.15s ease;
 }
 
-.meetingsSearchInput:focus {
+.jobsSearchInput:focus {
   border-color: var(--primary);
 }
 
-.logMeetingBtn {
+.addToJobBtn {
   background-color: #1e3a8a;
   color: #ffffff;
   border: none;
@@ -451,33 +504,24 @@
   flex-shrink: 0;
 }
 
-.logMeetingBtn:hover {
+.addToJobBtn:hover {
   background-color: #172554;
 }
 
-.resultsCount {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin: 0 0 1rem 4px;
-}
-
-/* MEETINGS — TABELA (1 linha por registro) */
-.meetingsTableWrapper {
+.jobsTableWrapper {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   overflow-x: auto;
 }
 
-.meetingsTable {
+.jobsTable {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
   font-size: 0.82rem;
 }
 
-.meetingsTable thead th {
+.jobsTable thead th {
   text-align: left;
   padding: 12px 14px;
   font-size: 0.68rem;
@@ -490,45 +534,159 @@
   white-space: nowrap;
 }
 
-.meetingsTable tbody tr:hover {
+.jobsTable tbody tr:hover {
   background-color: #f8fafc;
 }
 
-.meetingsTable tbody tr:not(:last-child) td {
+.jobsTable tbody tr:not(:last-child) td {
   border-bottom: 1px solid #f1f5f9;
 }
 
-.meetingsTable td {
+.jobsTable td {
+  padding: 12px 14px;
+  vertical-align: middle;
+}
+
+.jobPositionLink {
+  font-weight: 700;
+  color: #1e3a8a;
+  text-decoration: underline;
+}
+
+.jobPositionLink:hover {
+  color: var(--primary);
+}
+
+.jobStageBadge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.droppedYes {
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.droppedNo {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.jobsDateCell {
+  color: #475569;
+  white-space: nowrap;
+}
+
+.emptyJobsRow {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px !important;
+  font-size: 0.9rem;
+}
+
+/* FOLLOW UP */
+.followUpTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.82rem;
+}
+
+.followUpTable thead th {
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background-color: #f8fafc;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.followUpTable tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.followUpTable tbody tr:not(:last-child) td {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.followUpTable td {
   padding: 12px 14px;
   color: #475569;
   vertical-align: middle;
 }
 
-.meetingCellTruncate {
+.followUpCellTruncate {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.meetingTitleText {
+.followUpLink {
   font-weight: 700;
-  color: var(--text-main);
+  color: #1e3a8a;
+  text-decoration: underline;
 }
 
-.meetingNotes {
+.followUpLink:hover {
+  color: var(--primary);
+}
+
+.followUpSubjectBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.followUpObservation {
   color: var(--text-muted);
   font-style: italic;
   font-size: 0.78rem;
 }
 
-.subjectBadge {
-  background: #f1f5f9;
-  color: #334155;
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 6px;
+/* INTERVIEWS */
+.interviewsTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.8rem;
+  min-width: 900px;
+}
+
+.interviewsTable thead th {
+  text-align: left;
+  padding: 12px 12px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background-color: #f8fafc;
+  border-bottom: 1px solid var(--border-color);
   white-space: nowrap;
+}
+
+.interviewsTable tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.interviewsTable tbody tr:not(:last-child) td {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.interviewsTable td {
+  padding: 11px 12px;
+  vertical-align: middle;
 }
 
 .meetingActionsCell {
@@ -551,101 +709,12 @@
   color: var(--text-main);
 }
 
-.emptyMeetings {
-  text-align: center;
-  color: var(--text-muted);
-  padding: 40px !important;
-  font-size: 0.9rem;
-}
-
-/* DRAWER (registrar reunião) — mesmo padrão do drawer de New Client */
-.drawer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 400px;
-  height: 100vh;
-  background: #ffffff;
-  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
-  transform: translateX(100%);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 100;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-}
-
-.drawerOpen {
-  transform: translateX(0);
-}
-
-.drawerHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #e2e8f0;
-  padding-bottom: 1rem;
-}
-
-.drawerHeader h2 {
-  font-size: 1.2rem;
-  color: #0f172a;
-}
-
-.drawerHeader button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #64748b;
-}
-
-.drawerForm {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.drawerForm .inputGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.drawerForm .inputGroup label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #475569;
-}
-
-.drawerForm .inputGroup input,
-.drawerForm .inputGroup select,
-.drawerForm .inputGroup textarea {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #e2e8f0;
-  outline: none;
-  font-size: 0.9rem;
-  font-family: inherit;
-}
-
-.drawerForm .inputGroup textarea {
-  resize: vertical;
-}
-
-.saveBtn {
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 1rem;
-}
-
 /* NOTES */
+.notesLayout {
+  display: flex;
+  flex-direction: column;
+}
+
 .notesHeader {
   display: flex;
   justify-content: space-between;
@@ -698,6 +767,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  flex-shrink: 0;
 }
 
 .newNoteBtn:hover {
@@ -958,12 +1028,6 @@
 .documentDateCell {
   white-space: nowrap;
 }
-
-.documentActionsCell {
-  text-align: center;
-  white-space: nowrap;
-}
-
 /* HISTORY */
 .historyCard {
   background-color: var(--bg-card);
@@ -1040,47 +1104,7 @@
   font-size: 0.9rem;
 }
 
-/* LOGO EDITÁVEL (hover com câmera) */
-.logoUploadWrapper {
-  position: relative;
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.logoOverlay {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background-color: rgba(15, 23, 42, 0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.15s ease;
-}
-
-.logoUploadWrapper:hover .logoOverlay {
-  opacity: 1;
-}
-
-/* JOBS — botão de criar */
-.jobsHeaderRow {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 1rem;
-}
-
-/* Duas colunas lado a lado, reaproveitado em vários formulários */
-.twoColRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-/* MENU "⋮" (Edit / Delete) — reaproveitado em Jobs e Contacts */
+/* MENU "⋮" reaproveitado em vários blocos da página */
 .cardMenuWrapper {
   position: relative;
 }
@@ -1109,8 +1133,8 @@
   border: 1px solid var(--border-color);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  z-index: 10;
-  min-width: 110px;
+  z-index: 20;
+  min-width: 130px;
   overflow: hidden;
 }
 
@@ -1136,4 +1160,91 @@
 
 .cardMenuDelete:hover {
   background-color: #fee2e2 !important;
+}
+
+/* DRAWER (edição em geral) — mesmo padrão do resto do projeto */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+.drawerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputGroup label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  outline: none;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.saveBtn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.addParticipantBtn {
+  width: 100%;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.removeParticipantBtn {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  width: 38px;
+  color: #dc2626;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

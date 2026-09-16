@@ -5,9 +5,6 @@ import Topbar from "./components/Topbar";
 import "./globals.css";
 
 export default function RootLayout({ children }) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [activeGroup, setActiveGroup] = useState(null);
-
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -23,7 +20,7 @@ export default function RootLayout({ children }) {
         <div className="app-container">
           <style jsx global>{`
             body {
-              background-color: var(--bg-main);
+              background-color: #ffffff;
               overflow: hidden;
             }
             .app-container {
@@ -46,12 +43,7 @@ export default function RootLayout({ children }) {
             }
           `}</style>
 
-          <Sidebar
-            isCollapsed={isCollapsed}
-            setIsCollapsed={setIsCollapsed}
-            activeGroup={activeGroup}
-            setActiveGroup={setActiveGroup}
-          />
+          <Sidebar />
 
           <div className="main-content">
             <Topbar

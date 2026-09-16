@@ -37,7 +37,7 @@ export default function InactiveJobsPage() {
                 <h4>{job.title}</h4>
                 <span className={styles.company}>{job.company}</span>
                 <span className={styles.meta}>
-                  <MapPin size={12} /> {job.location}
+                  <MapPin size={12} /> {job.city}, {job.state} - {job.country}
                 </span>
               </div>
             </div>

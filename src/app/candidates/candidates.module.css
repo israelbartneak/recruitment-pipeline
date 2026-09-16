@@ -1,65 +1,82 @@
 .container {
   width: 100%;
-  background-color: var(--bg-main);
+  height: 100%;
+  background: var(--dash-bg);
+  font-family: var(--font-jakarta);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+  align-items: flex-start;
+  margin-bottom: 1.75rem;
+}
+
+.header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--dash-heading);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.accentLine {
+  width: 36px;
+  height: 2px;
+  background: var(--dash-accent);
+  margin-top: 10px;
 }
 
 .titleArea h1 {
-  font-size: 1.85rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--dash-heading);
   margin: 0;
 }
 
 .totalBadge {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--dash-muted);
   margin-top: 4px;
   display: block;
 }
 
 /* Botão Padrão Primário (40px de altura) */
 .addBtn {
-  background-color: #1e3a8a;
+  background: var(--dash-heading);
   color: #ffffff;
   border: none;
   border-radius: 8px;
   height: 40px;
   padding: 0 18px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: opacity 0.15s ease;
 }
 
 .addBtn:hover {
-  background-color: #172554;
+  opacity: 0.85;
 }
 
 /* Painel de Filtros Avançados */
 .filterCard {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+  background: var(--dash-card-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius);
   padding: 1.25rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-  margin-bottom: 2rem;
+  box-shadow: var(--dash-card-shadow);
+  margin-bottom: 1.5rem;
 }
 
 .cardHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--dash-frame-border);
   padding-bottom: 0.85rem;
 }
 
@@ -70,9 +87,11 @@
 }
 
 .titleGroup h2 {
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--dash-heading);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -85,8 +104,8 @@
 .clearBtn {
   background: none;
   border: none;
-  color: var(--text-muted);
-  font-size: 0.8rem;
+  color: var(--dash-muted);
+  font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -95,13 +114,13 @@
 }
 
 .clearBtn:hover {
-  color: var(--primary);
+  color: var(--dash-accent);
 }
 
 .toggleAccordionBtn {
-  background: #f8fafc;
-  border: 1px solid var(--border-color);
-  color: var(--text-muted);
+  background: var(--dash-segment-track);
+  border: 1px solid var(--dash-border);
+  color: var(--dash-muted);
   width: 32px;
   height: 32px;
   border-radius: 6px;
@@ -113,9 +132,9 @@
 }
 
 .toggleAccordionBtn:hover {
-  background-color: #f1f5f9;
-  color: var(--text-main);
-  border-color: #cbd5e1;
+  background-color: var(--dash-divider);
+  color: var(--dash-heading);
+  border-color: var(--dash-dropzone-border);
 }
 
 .filterGrid {
@@ -132,33 +151,36 @@
 }
 
 .inputGroup label {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #475569;
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--dash-muted);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
 .inputGroup input {
   height: 40px;
   padding: 0 12px;
   border-radius: 6px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--dash-dropzone-border);
   font-size: 0.85rem;
-  color: #1e293b;
+  color: var(--dash-text);
   outline: none;
+  background: transparent;
   transition: border-color 0.15s ease;
 }
 
 .inputGroup input:focus {
-  border-color: var(--primary);
+  border-color: var(--dash-accent);
 }
 
 .inputGroup select {
   height: 40px;
   padding: 0 12px;
   border-radius: 6px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--dash-dropzone-border);
   font-size: 0.85rem;
-  color: #1e293b;
+  color: var(--dash-text);
   outline: none;
   background-color: #ffffff;
   cursor: pointer;
@@ -166,7 +188,7 @@
 }
 
 .inputGroup select:focus {
-  border-color: var(--primary);
+  border-color: var(--dash-accent);
 }
 
 .resultsHeader {
@@ -177,9 +199,10 @@
 }
 
 .resultsTitle {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dash-heading);
+  margin-bottom: 1rem;
 }
 
 .entriesRow {
@@ -190,7 +213,7 @@
 
 .entriesLabel {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--dash-muted);
   font-weight: 600;
 }
 
@@ -198,25 +221,29 @@
   height: 34px;
   padding: 0 10px;
   border-radius: 6px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--dash-dropzone-border);
   font-size: 0.85rem;
-  color: #1e293b;
+  color: var(--dash-text);
   outline: none;
   background-color: #ffffff;
   cursor: pointer;
 }
 
 .entriesSelect:focus {
-  border-color: var(--primary);
+  border-color: var(--dash-accent);
 }
 
 /* Tabela de Resultados Estritamente Alinhada */
 .tableWrapper {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+  background: var(--dash-card-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius);
   overflow-x: auto;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  box-shadow: var(--dash-card-shadow);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .listTable {
@@ -227,51 +254,57 @@
 }
 
 .listTable th {
-  background-color: #f8fafc;
-  color: #475569;
+  background: transparent;
+  color: var(--dash-muted);
   font-weight: 700;
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   padding: 14px 16px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--dash-frame-border);
   white-space: nowrap;
 }
 
 .listTable td {
   padding: 14px 16px;
-  border-bottom: 1px solid #f1f5f9;
-  color: #475569;
+  border-bottom: 1px solid var(--dash-frame-border);
+  color: var(--dash-text);
   vertical-align: middle;
 }
 
 .listTable tbody tr:hover {
-  background-color: #f8fafc;
+  background-color: var(--dash-segment-track);
 }
 
 .idCell {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 600;
-  color: #1e3a8a;
+  color: var(--dash-heading);
   white-space: nowrap;
 }
 
 .primaryText {
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--dash-heading);
   white-space: nowrap;
+  text-decoration: none;
+}
+
+.primaryText:hover {
+  color: var(--dash-accent);
+  text-decoration: underline;
 }
 
 .cellItem {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #475569;
+  color: var(--dash-text);
 }
 
 .cellIcon {
-  color: var(--text-muted);
+  color: var(--dash-muted);
   flex-shrink: 0;
 }
 
@@ -282,30 +315,30 @@
 }
 
 .locationPrimary {
-  color: #475569;
+  color: var(--dash-text);
 }
 
 .locationCountry {
   font-size: 0.78rem;
-  color: var(--text-muted);
+  color: var(--dash-muted);
 }
 
 .jobItem {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--primary);
+  color: var(--dash-accent);
   font-weight: 600;
 }
 
 .historyCellWrapper {
   padding: 14px 16px;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--dash-frame-border);
   max-width: 220px;
 }
 
 .historyCell {
-  color: #334155;
+  color: var(--dash-text);
   font-style: italic;
   font-size: 0.82rem;
   display: -webkit-box;
@@ -328,7 +361,7 @@
 .actionRowBtn {
   background: none;
   border: none;
-  color: var(--text-muted);
+  color: var(--dash-muted);
   cursor: pointer;
   padding: 4px;
   border-radius: 4px;
@@ -338,13 +371,139 @@
 }
 
 .actionRowBtn:hover {
-  background-color: #e2e8f0;
-  color: #334155;
+  background-color: var(--dash-divider);
+  color: var(--dash-heading);
 }
 
 .emptyState {
   text-align: center;
-  color: var(--text-muted);
+  color: var(--dash-muted);
   padding: 40px !important;
   font-size: 0.9rem;
+}
+
+/* NOVA TABELA — larguras em % (soma 100%), sempre cabe sem scroll */
+.listTable {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.truncateCell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 10px 10px;
+  font-size: 0.78rem;
+  color: var(--dash-text);
+}
+
+.candidateNameCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.candidateNameCell span {
+  font-weight: 700;
+  color: var(--dash-heading);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.candidateThumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.statusBadgeSmall {
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.applicationCell {
+  font-weight: 700;
+  color: var(--dash-accent);
+}
+
+.totalRegisteredNote {
+  font-weight: 500;
+  color: var(--dash-muted);
+  font-size: 0.8rem;
+}
+
+.containerFullHeight {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.paginationFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+  border-top: 1px solid var(--dash-frame-border);
+  margin-top: auto;
+}
+
+.pageNavBtn {
+  background: transparent;
+  border: 1px solid var(--dash-dropzone-border);
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--dash-text);
+  cursor: pointer;
+}
+
+.pageNavBtn:hover:not(:disabled) {
+  background-color: var(--dash-segment-track);
+}
+
+.pageNavBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 4px;
+}
+
+.pageNumberBtn {
+  background: none;
+  border: none;
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--dash-muted);
+  cursor: pointer;
+}
+
+.pageNumberBtn:hover {
+  background-color: var(--dash-segment-track);
+}
+
+.pageNumberBtnActive {
+  background-color: var(--dash-heading) !important;
+  color: #ffffff !important;
+}
+
+.addBtnPlus {
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1;
 }

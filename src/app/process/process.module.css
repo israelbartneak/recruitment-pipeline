@@ -1,0 +1,326 @@
+.container {
+  width: 100%;
+  height: 100%;
+  background: var(--dash-bg);
+  font-family: var(--font-jakarta);
+}
+
+.pageTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--dash-heading);
+  letter-spacing: -0.01em;
+  margin-bottom: 0;
+}
+
+.accentLine {
+  width: 36px;
+  height: 2px;
+  background: var(--dash-accent);
+  margin-top: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.tabsRow {
+  display: flex;
+  gap: 22px;
+  border-bottom: 1px solid var(--dash-frame-border);
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.tabBtn {
+  background: none;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--dash-muted);
+  cursor: pointer;
+  padding-bottom: 8px;
+  border-bottom: 2px solid transparent;
+}
+
+.tabBtn:hover {
+  color: var(--dash-heading);
+}
+
+.activeTab {
+  font-weight: 700;
+  color: var(--dash-heading);
+  border-bottom: 2px solid var(--dash-accent);
+}
+
+.flowCard {
+  background: var(--dash-card-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius);
+  box-shadow: var(--dash-card-shadow);
+  padding: 2rem;
+  overflow-x: auto;
+}
+
+.flowTitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--dash-heading);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.flowWrapper {
+  position: relative;
+  width: max-content;
+}
+
+.connectorSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.noLabel {
+  background-color: #fee2e2;
+  color: #dc2626;
+  font-size: 0.62rem;
+  font-weight: 800;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 20px;
+  width: 32px;
+}
+
+.yesLabelSvg {
+  background-color: #dcfce7;
+  color: #15803d;
+  font-size: 0.6rem;
+  font-weight: 800;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 20px;
+  width: 36px;
+}
+
+/* ===== LINHA 1 ===== */
+.row1 {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 60px;
+}
+
+.startCircle {
+  position: absolute;
+  top: 37px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  border: 2px solid #15803d;
+}
+
+.hArrow {
+  position: absolute;
+  top: 49px;
+  height: 2px;
+  background-color: #94a3b8;
+}
+
+.hArrow::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -4px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid #94a3b8;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.flowBox {
+  position: absolute;
+  top: 4px;
+  width: 190px;
+  height: 92px;
+  background-color: #eff6ff;
+  border: 2px solid #1d4ed8;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 10px;
+}
+
+.flowBoxTitle {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #1d4ed8;
+  line-height: 1.2;
+}
+
+.flowBoxDesc {
+  font-size: 0.62rem;
+  font-weight: 500;
+  color: #3b5bdb;
+  line-height: 1.25;
+  margin-top: 3px;
+}
+
+/* ===== LINHA 2 ===== */
+.row2 {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.rowArrow {
+  height: 2px;
+  background-color: #94a3b8;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.rowArrow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -4px;
+  width: 0;
+  height: 0;
+  border-right: 8px solid #94a3b8;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+/* Tamanho ÚNICO para todas as caixas retangulares do fluxo */
+.flowBoxBlue,
+.flowBoxRed {
+  width: 190px;
+  height: 92px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.flowBoxBlue {
+  background-color: #eff6ff;
+  border: 2px solid #1d4ed8;
+}
+
+.flowBoxBlue span {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #1d4ed8;
+  line-height: 1.25;
+}
+
+.flowBoxRed {
+  background-color: #fee2e2;
+  border: 2px solid #dc2626;
+}
+
+.flowBoxRed span {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #dc2626;
+  line-height: 1.25;
+}
+
+/* Tamanho ÚNICO para todos os losangos do fluxo */
+.diamondWrapper {
+  width: 130px;
+  height: 130px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diamondShape {
+  width: 118px;
+  height: 118px;
+  background-color: #fef9c3;
+  border: 2px dashed #ca8a04;
+  border-radius: 6px;
+  transform: rotate(45deg);
+  position: absolute;
+}
+
+.diamondText {
+  position: relative;
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #a16207;
+  text-align: center;
+  line-height: 1.2;
+  z-index: 1;
+  padding: 0 18px;
+}
+
+.yesArrowCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 48px;
+}
+
+.yesLabel {
+  background-color: #dcfce7;
+  color: #15803d;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-bottom: 3px;
+}
+
+.greenArrow {
+  width: 38px;
+  height: 3px;
+  background-color: #22c55e;
+  position: relative;
+}
+
+.greenArrow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -4.5px;
+  width: 0;
+  height: 0;
+  border-right: 9px solid #22c55e;
+  border-top: 5.5px solid transparent;
+  border-bottom: 5.5px solid transparent;
+}
+
+.endCircle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #dc2626;
+  border: 2px solid #991b1b;
+}
+
+.placeholderTab {
+  background: var(--dash-card-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius);
+  box-shadow: var(--dash-card-shadow);
+  padding: 3rem;
+  text-align: center;
+  color: var(--dash-muted);
+  font-size: 0.9rem;
+}

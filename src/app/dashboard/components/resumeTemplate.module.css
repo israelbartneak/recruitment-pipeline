@@ -1,0 +1,210 @@
+/* src/app/dashboard/components/resumeTemplate.module.css */
+
+.resumePage {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  width: 794px; /* largura A4 em px @ 96dpi */
+  min-height: 1123px; /* altura A4 */
+  background-color: #ffffff;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  color: #1e293b;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+  margin: 0 auto;
+}
+
+/* SIDEBAR */
+.sidebar {
+  background-color: #f8fafc;
+  border-right: 1px solid #e2e8f0;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.photoWrapper {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fe5102;
+  margin: 0 auto 0.5rem auto;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* SECTIONS (shared) */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.sectionTitle {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fe5102;
+  margin: 0 0 0.35rem 0;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid #fe5102;
+}
+
+.plainText {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #334155;
+  margin: 0;
+}
+
+.plainList,
+.bulletList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bulletList li {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: #334155;
+  padding-left: 0.9rem;
+  position: relative;
+}
+
+.bulletList li::before {
+  content: "•";
+  color: #fe5102;
+  position: absolute;
+  left: 0;
+}
+
+.plainList li {
+  font-size: 0.78rem;
+  color: #334155;
+}
+
+.muted {
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+/* MAIN CONTENT */
+.main {
+  padding: 2rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.role {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fe5102;
+  margin: 0;
+}
+
+.jobBadge {
+  display: inline-block;
+  margin-top: 6px;
+  width: fit-content;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #1e293b;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* EXPERIENCE */
+.expItem {
+  margin-bottom: 1rem;
+}
+
+.expItem:last-child {
+  margin-bottom: 0;
+}
+
+.expHeader,
+.eduHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 0.3rem;
+}
+
+.expRole,
+.eduDegree {
+  font-size: 0.86rem;
+  color: #0f172a;
+}
+
+.expCompany,
+.eduInstitution {
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.expPeriod,
+.eduPeriod {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+/* EDUCATION */
+.eduItem {
+  margin-bottom: 0.9rem;
+}
+
+.eduItem:last-child {
+  margin-bottom: 0;
+}
+
+.certBlock {
+  margin-top: 0.9rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.certLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #334155;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* PRINT / EXPORT */
+@media print {
+  .resumePage {
+    box-shadow: none;
+    margin: 0;
+  }
+}

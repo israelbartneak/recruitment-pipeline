@@ -1,3 +1,4 @@
+// src/app/clients/mockClients.js
 export const mockClients = [
   {
     id: "nimbus-technology",
@@ -6,6 +7,9 @@ export const mockClients = [
     status: "ACTIVES",
     since: "Jan 2024",
     website: "https://nimbustechnology.com",
+    companyEmail: "contact@nimbustechnology.com",
+    companyPhone: "+55 41 3333-4444",
+    address: "Rua das Araucárias, 450",
     city: "Curitiba",
     state: "Paraná",
     country: "Brazil",
@@ -14,13 +18,194 @@ export const mockClients = [
     logoColor: "0c4a6e",
     logoUrl: "https://placehold.co/72x72/0c4a6e/ffffff?text=NT",
     contractTags: ["BPO"],
-    firstContactDate: "10/01/2024",
     contractSignedDate: "22/01/2024",
-    ceoName: "Marcos Vieira",
-    ceoPhone: "+55 41 99888-7766",
-    primaryContactName: "Rafael Sousa",
-    primaryContactEmail: "rafael@nimbustechnology.com",
+    createdAt: "10/01/2024",
+    updatedAt: "14/08/2026",
+
+    meetings: [
+      {
+        id: "m1",
+        date: "14/08/2026",
+        title: "Q3 Contract Review Call",
+        participants: "Rafael Sousa, Bryan Santana, Marina Costa",
+        createdBy: "Bryan Santana",
+        subject: "Contract",
+        notes:
+          "Client requested revised pricing for the BPO contract renewal, effective next quarter.",
+        fileUrl: "#",
+      },
+      {
+        id: "m2",
+        date: "02/07/2026",
+        title: "Kickoff - New Positions",
+        participants: "Marina Costa, Bianca Melo",
+        createdBy: "Bianca Melo",
+        subject: "Onboarding",
+        notes:
+          "Aligned on 2 new open roles for Q3, client wants candidates fluent in English.",
+        fileUrl: "#",
+      },
+      {
+        id: "m3",
+        date: "15/01/2024",
+        title: "Initial Sales Call",
+        participants: "Rafael Sousa, Diego Ramos",
+        createdBy: "Rafael Sousa",
+        subject: "Sales",
+        notes:
+          "First contact, discussed scope and pricing model, client is comparing 2 other agencies.",
+        fileUrl: "#",
+      },
+    ],
+
+    notes: [
+      {
+        id: "n1",
+        title: "Pricing negotiation follow-up",
+        body:
+          "Client asked for a 5% discount on the BPO monthly fee, citing a competing proposal from another agency. Suggested keeping the current rate but adding one extra free replacement guarantee per quarter. Waiting on their finance team's confirmation before end of month.",
+        createdBy: "Bryan Santana",
+        createdAt: "14/08/2026",
+        updatedBy: null,
+        updatedAt: null,
+      },
+      {
+        id: "n2",
+        title: "Client feedback on Q2 candidates",
+        body:
+          "Client was very happy with the last 2 candidates submitted for the Web Developer role. Asked to prioritize similar profiles (strong React background) for future roles.",
+        createdBy: "Rafael Sousa",
+        createdAt: "10/06/2026",
+        updatedBy: "Bryan Santana",
+        updatedAt: "12/06/2026",
+      },
+      {
+        id: "n3",
+        title: "Internal reminder - renewal date",
+        body:
+          "Contract renewal is coming up in January 2027. Schedule a check-in call with the client at least 30 days before to discuss terms.",
+        createdBy: "Bryan Santana",
+        createdAt: "05/05/2026",
+        updatedBy: null,
+        updatedAt: null,
+      },
+      {
+        id: "n4",
+        title: "Escalation - delayed response",
+        body:
+          "Client mentioned taking longer than usual to respond to submissions this month. Might be related to internal restructuring on their side. Keep an eye on response times.",
+        createdBy: "Rafael Sousa",
+        createdAt: "22/04/2026",
+        updatedBy: null,
+        updatedAt: null,
+      },
+    ],
+
+    contacts: [
+      {
+        id: "c1",
+        name: "Rafael Sousa",
+        role: "CEO",
+        email: "rafael@nimbustechnology.com",
+        phone: "+55 41 99888-7766",
+      },
+      {
+        id: "c2",
+        name: "Marina Costa",
+        role: "HR Director",
+        email: "marina@nimbustechnology.com",
+        phone: "+55 41 98888-1234",
+      },
+    ],
+
+    documents: [
+      {
+        id: "d1",
+        name: "Service_Agreement_2024.pdf",
+        type: "Contract",
+        createdBy: "Bryan Santana",
+        date: "22/01/2024",
+      },
+      {
+        id: "d2",
+        name: "NDA_Nimbus_Frontall.pdf",
+        type: "Confidential",
+        createdBy: "Rafael Sousa",
+        date: "15/01/2024",
+      },
+      {
+        id: "d3",
+        name: "Timesheet_July_2026.xlsx",
+        type: "Time Sheets",
+        createdBy: "Bianca Melo",
+        date: "01/08/2026",
+      },
+    ],
+
+    history: [
+      {
+        id: "h1",
+        userName: "Bryan Santana",
+        userInitials: "BS",
+        userColor: "#1e3a8a",
+        action: "added a note",
+        target: "Pricing negotiation follow-up",
+        timeAgo: "6 hours ago",
+        dateTime: "14/08/2026, 09:20 AM",
+      },
+      {
+        id: "h2",
+        userName: "Rafael Sousa",
+        userInitials: "RS",
+        userColor: "#c2410c",
+        action: "logged a meeting",
+        target: "Q3 Contract Review Call",
+        timeAgo: "2 days ago",
+        dateTime: "12/08/2026, 02:10 PM",
+      },
+      {
+        id: "h3",
+        userName: "Bianca Melo",
+        userInitials: "BM",
+        userColor: "#7c3aed",
+        action: "uploaded a document",
+        target: "Timesheet_July_2026.xlsx",
+        timeAgo: "2 weeks ago",
+        dateTime: "01/08/2026, 03:45 PM",
+      },
+      {
+        id: "h4",
+        userName: "Bryan Santana",
+        userInitials: "BS",
+        userColor: "#1e3a8a",
+        action: "edited Company Information",
+        target: null,
+        timeAgo: "a month ago",
+        dateTime: "20/07/2026, 11:00 AM",
+      },
+      {
+        id: "h5",
+        userName: "Rafael Sousa",
+        userInitials: "RS",
+        userColor: "#c2410c",
+        action: "added a contact",
+        target: "Marina Costa",
+        timeAgo: "2 months ago",
+        dateTime: "15/06/2026, 04:30 PM",
+      },
+      {
+        id: "h6",
+        userName: "Bryan Santana",
+        userInitials: "BS",
+        userColor: "#1e3a8a",
+        action: "created the client",
+        target: null,
+        timeAgo: "2 years ago",
+        dateTime: "10/01/2024, 10:15 AM",
+      },
+    ],
   },
+
   {
     id: "cedro-foods",
     name: "Cedro Foods",
@@ -28,6 +213,9 @@ export const mockClients = [
     status: "PROSPECTION",
     since: "Mar 2023",
     website: "https://cedrofoods.com",
+    companyEmail: "contact@cedrofoods.com",
+    companyPhone: "+55 11 4444-5555",
+    address: "Av. Paulista, 1200",
     city: "São Paulo",
     state: "São Paulo",
     country: "Brazil",
@@ -36,13 +224,28 @@ export const mockClients = [
     logoColor: "0c4a6e",
     logoUrl: "https://placehold.co/72x72/0c4a6e/ffffff?text=CF",
     contractTags: ["Direct Hire"],
-    firstContactDate: "05/03/2023",
     contractSignedDate: "-",
-    ceoName: "Marina Costa",
-    ceoPhone: "+55 11 98888-1234",
-    primaryContactName: "Bianca Melo",
-    primaryContactEmail: "bianca@cedrofoods.com",
+    createdAt: "05/03/2023",
+    updatedAt: "02/07/2026",
+
+    meetings: [],
+    notes: [],
+
+    contacts: [
+      {
+        id: "c1",
+        name: "Bianca Melo",
+        role: "HR Manager",
+        email: "bianca@cedrofoods.com",
+        phone: "+55 11 98888-4321",
+      },
+    ],
+
+    documents: [],
+
+    history: [],
   },
+
   {
     id: "vetta-health",
     name: "Vetta Health",
@@ -50,6 +253,9 @@ export const mockClients = [
     status: "BID",
     since: "Jun 2026",
     website: "https://vettahealth.com",
+    companyEmail: "contact@vettahealth.com",
+    companyPhone: "+55 31 5555-6666",
+    address: "Rua da Bahia, 800",
     city: "Belo Horizonte",
     state: "Minas Gerais",
     country: "Brazil",
@@ -58,13 +264,28 @@ export const mockClients = [
     logoColor: "0c4a6e",
     logoUrl: "https://placehold.co/72x72/0c4a6e/ffffff?text=VH",
     contractTags: ["EOR"],
-    firstContactDate: "01/06/2026",
     contractSignedDate: "-",
-    ceoName: "Renata Alves",
-    ceoPhone: "+55 31 97777-4321",
-    primaryContactName: "Diego Ramos",
-    primaryContactEmail: "diego@vettahealth.com",
+    createdAt: "01/06/2026",
+    updatedAt: "01/06/2026",
+
+    meetings: [],
+    notes: [],
+
+    contacts: [
+      {
+        id: "c1",
+        name: "Diego Ramos",
+        role: "Operations Director",
+        email: "diego@vettahealth.com",
+        phone: "+55 31 97777-4321",
+      },
+    ],
+
+    documents: [],
+
+    history: [],
   },
+
   {
     id: "frontall-internal-hq",
     name: "Frontall Internal HQ",
@@ -72,6 +293,9 @@ export const mockClients = [
     status: "ACTIVES",
     since: "Jan 2022",
     website: "https://frontallusa.com",
+    companyEmail: "hq@frontallusa.com",
+    companyPhone: "+55 41 3222-1000",
+    address: "Rua XV de Novembro, 100",
     city: "Curitiba",
     state: "Paraná",
     country: "Brazil",
@@ -80,13 +304,28 @@ export const mockClients = [
     logoColor: "0f766e",
     logoUrl: "https://placehold.co/72x72/0f766e/ffffff?text=FI",
     contractTags: ["Internal"],
-    firstContactDate: "01/01/2022",
     contractSignedDate: "10/01/2022",
-    ceoName: "—",
-    ceoPhone: "—",
-    primaryContactName: "Bryan Santana",
-    primaryContactEmail: "bryan@frontallusa.com",
+    createdAt: "01/01/2022",
+    updatedAt: "20/08/2026",
+
+    meetings: [],
+    notes: [],
+
+    contacts: [
+      {
+        id: "c1",
+        name: "Bryan Santana",
+        role: "IT Specialist",
+        email: "bryan@frontallusa.com",
+        phone: "+55 41 99999-0000",
+      },
+    ],
+
+    documents: [],
+
+    history: [],
   },
+
   {
     id: "legacy-solutions",
     name: "Legacy Solutions",
@@ -94,6 +333,9 @@ export const mockClients = [
     status: "INACTIVES",
     since: "Feb 2021",
     website: "https://legacysolutions.com",
+    companyEmail: "contact@legacysolutions.com",
+    companyPhone: "+1 305 555-0100",
+    address: "123 Ocean Drive",
     city: "Miami",
     state: "Florida",
     country: "United States",
@@ -102,11 +344,25 @@ export const mockClients = [
     logoColor: "64748b",
     logoUrl: "https://placehold.co/72x72/64748b/ffffff?text=LS",
     contractTags: ["Temp"],
-    firstContactDate: "01/02/2021",
     contractSignedDate: "15/02/2021",
-    ceoName: "John Miller",
-    ceoPhone: "+1 305 555-0100",
-    primaryContactName: "Lucas Lima",
-    primaryContactEmail: "lucas@legacysolutions.com",
+    createdAt: "01/02/2021",
+    updatedAt: "10/03/2021",
+
+    meetings: [],
+    notes: [],
+
+    contacts: [
+      {
+        id: "c1",
+        name: "Lucas Lima",
+        role: "CEO",
+        email: "lucas@legacysolutions.com",
+        phone: "+1 305 555-0199",
+      },
+    ],
+
+    documents: [],
+
+    history: [],
   },
 ];

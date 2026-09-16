@@ -1,47 +1,64 @@
 .container {
   width: 100%;
-  background-color: var(--bg-main);
+  height: 100%;
+  background: var(--dash-bg);
+  font-family: var(--font-jakarta);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+  align-items: flex-start;
+  margin-bottom: 1.75rem;
+}
+
+.header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--dash-heading);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.accentLine {
+  width: 36px;
+  height: 2px;
+  background: var(--dash-accent);
+  margin-top: 10px;
 }
 
 .titleArea h1 {
-  font-size: 1.85rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--dash-heading);
   margin: 0;
 }
 
 .totalBadge {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--dash-muted);
   margin-top: 4px;
   display: block;
 }
 
 .addBtn {
-  background-color: #1e3a8a;
+  background: var(--dash-heading);
   color: #ffffff;
   border: none;
   border-radius: 8px;
   height: 40px;
   padding: 0 18px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: opacity 0.15s ease;
 }
 
 .addBtn:hover {
-  background-color: #172554;
+  opacity: 0.85;
 }
 
 /* Search & Filter Bar */
@@ -49,11 +66,12 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 0.75rem;
-  background-color: var(--bg-card);
+  margin-bottom: 0.85rem;
+  background: var(--dash-card-bg);
   padding: 12px 16px;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
+  border-radius: var(--dash-radius);
+  border: 1px solid var(--dash-border);
+  box-shadow: var(--dash-card-shadow);
 }
 
 .searchWrapper {
@@ -66,7 +84,7 @@
   left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-muted);
+  color: var(--dash-muted);
 }
 
 .searchInput {
@@ -74,15 +92,16 @@
   height: 40px;
   padding: 0 14px 0 42px;
   border-radius: 8px;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--dash-dropzone-border);
   font-size: 0.875rem;
-  color: #334155;
+  color: var(--dash-text);
   outline: none;
+  background: transparent;
   transition: border-color 0.15s ease;
 }
 
 .searchInput:focus {
-  border-color: var(--primary);
+  border-color: var(--dash-accent);
 }
 
 .filterGroup {
@@ -92,35 +111,35 @@
 
 .filterBtn {
   background: transparent;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--dash-dropzone-border);
   border-radius: 20px;
   padding: 6px 14px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  color: #475569;
+  color: var(--dash-muted);
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.15s ease;
 }
 
 .filterBtn:hover {
-  background-color: #f8fafc;
+  background-color: var(--dash-segment-track);
 }
 
 .filterBtnActive {
-  background-color: #1e3a8a !important;
+  background-color: var(--dash-heading) !important;
   color: #ffffff !important;
-  border-color: #1e3a8a !important;
+  border-color: var(--dash-heading) !important;
 }
 
 .resultsCount {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin: 0 0 1.5rem 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dash-heading);
+  margin: 0 0 1rem 4px;
 }
 
-/* Clientes Grid — 4 por linha */
+/* Clientes Grid — 4 por linha (não usado atualmente, mantido por segurança) */
 .clientsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -128,9 +147,9 @@
 }
 
 .clientCard {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+  background: var(--dash-card-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius);
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -146,7 +165,7 @@
 .avatarBox {
   width: 38px;
   height: 38px;
-  background-color: #0c4a6e;
+  background-color: var(--dash-heading);
   color: #ffffff;
   border-radius: 8px;
   display: flex;
@@ -165,7 +184,7 @@
 .metaBox h4 {
   font-size: 0.86rem;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--dash-heading);
   margin: 0 0 2px 0;
   white-space: nowrap;
   overflow: hidden;
@@ -174,7 +193,7 @@
 
 .metaBox span {
   font-size: 0.7rem;
-  color: var(--text-muted);
+  color: var(--dash-muted);
 }
 
 .statusBadge {
@@ -193,8 +212,8 @@
 
 /* Card Body & Footer */
 .cardBody {
-  border-top: 1px solid #f1f5f9;
-  border-bottom: 1px solid #f1f5f9;
+  border-top: 1px solid var(--dash-frame-border);
+  border-bottom: 1px solid var(--dash-frame-border);
   padding: 0.75rem 0;
   margin-bottom: 0.75rem;
 }
@@ -212,7 +231,7 @@
 
 .label {
   font-size: 0.72rem;
-  color: var(--text-muted);
+  color: var(--dash-muted);
   display: flex;
   align-items: center;
   gap: 3px;
@@ -221,7 +240,7 @@
 .value {
   font-size: 0.72rem;
   font-weight: 600;
-  color: #334155;
+  color: var(--dash-text);
   text-align: right;
 }
 
@@ -241,37 +260,37 @@
 .contactName {
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--dash-heading);
 }
 
 .websiteLink {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #1e3a8a;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--dash-heading);
   text-decoration: underline;
 }
 
 .websiteLink:hover {
-  color: var(--primary);
+  color: var(--dash-accent);
 }
 
 .contactLink:hover {
-  color: var(--primary);
+  color: var(--dash-accent);
 }
 
 .actionBtn {
-  background-color: #f8fafc;
-  border: 1px solid var(--border-color);
+  background: var(--dash-segment-track);
+  border: 1px solid var(--dash-border);
   border-radius: 6px;
   padding: 6px;
-  color: var(--text-muted);
+  color: var(--dash-muted);
   cursor: pointer;
   flex-shrink: 0;
 }
 
 .actionBtn:hover {
-  background-color: #f1f5f9;
-  color: var(--text-main);
+  background-color: var(--dash-divider);
+  color: var(--dash-heading);
 }
 
 /* MODAL DE SELEÇÃO */
@@ -287,12 +306,13 @@
 }
 
 .modalContent {
-  background: white;
-  border-radius: 12px;
+  background: #ffffff;
+  border-radius: var(--dash-radius);
   padding: 2rem;
   width: 100%;
   max-width: 500px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(22, 56, 83, 0.15);
+  font-family: var(--font-jakarta);
 }
 
 .modalHeader {
@@ -303,15 +323,17 @@
 }
 
 .modalHeader h3 {
-  font-size: 1.1rem;
-  color: #0f172a;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--dash-heading);
+  letter-spacing: 0.02em;
 }
 
 .modalHeader button {
   background: none;
   border: none;
   cursor: pointer;
-  color: #64748b;
+  color: var(--dash-muted);
 }
 
 .choiceGrid {
@@ -321,9 +343,9 @@
 }
 
 .choiceCard {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  background: var(--dash-bg);
+  border: 1px solid var(--dash-frame-border);
+  border-radius: var(--dash-radius-sm);
   padding: 1.5rem;
   cursor: pointer;
   display: flex;
@@ -335,26 +357,26 @@
 }
 
 .choiceCard:hover {
-  border-color: #FE5102;
-  background: #fffaf8;
+  border-color: var(--dash-accent);
 }
 
-.choiceCard h4 { font-size: 0.95rem; color: #0f172a; }
-.choiceCard p { font-size: 0.75rem; color: #64748b; }
+.choiceCard h4 { font-size: 0.9rem; color: var(--dash-heading); font-weight: 700; }
+.choiceCard p { font-size: 0.75rem; color: var(--dash-muted); }
 
 /* DRAWER LATERAL DE CRIAÇÃO */
 .drawer {
   position: fixed;
   top: 0; right: 0;
   width: 400px; height: 100vh;
-  background: white;
-  box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+  background: #ffffff;
+  box-shadow: -5px 0 25px rgba(22, 56, 83, 0.15);
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 100;
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  font-family: var(--font-jakarta);
 }
 
 .drawerOpen { transform: translateX(0); }
@@ -364,12 +386,12 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--dash-frame-border);
   padding-bottom: 1rem;
 }
 
-.drawerHeader h2 { font-size: 1.2rem; color: #0f172a; }
-.drawerHeader button { background: none; border: none; cursor: pointer; color: #64748b; }
+.drawerHeader h2 { font-size: 1rem; font-weight: 700; color: var(--dash-heading); }
+.drawerHeader button { background: none; border: none; cursor: pointer; color: var(--dash-muted); }
 
 .drawerForm {
   display: flex;
@@ -383,22 +405,38 @@
   gap: 6px;
 }
 
-.inputGroup label { font-size: 0.8rem; font-weight: 600; color: #475569; }
+.inputGroup label {
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--dash-muted);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
 .inputGroup input, .inputGroup select {
   padding: 10px;
   border-radius: 6px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--dash-dropzone-border);
   outline: none;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  color: var(--dash-text);
+  background: transparent;
+  font-family: inherit;
+}
+
+.inputGroup input:focus, .inputGroup select:focus {
+  border-color: var(--dash-accent);
 }
 
 .saveBtn {
-  background: #FE5102;
-  color: white;
-  border: none;
-  border-radius: 6px;
+  background: var(--dash-btn-bg);
+  color: var(--dash-btn-text);
+  border: 1px solid var(--dash-btn-border);
+  box-shadow: var(--dash-btn-shadow);
+  border-radius: 8px;
   padding: 12px;
   font-weight: 600;
+  font-size: 0.85rem;
   cursor: pointer;
   margin-top: 1rem;
 }
@@ -406,7 +444,7 @@
 .clientNameLink {
   font-size: 0.86rem;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--dash-heading);
   margin: 0 0 2px 0;
   white-space: nowrap;
   overflow: hidden;
@@ -415,6 +453,281 @@
 }
 
 .clientNameLink:hover {
-  color: #1e3a8a;
+  color: var(--dash-accent);
   text-decoration: underline;
+}
+
+/* LOGO UPLOAD */
+.logoUploadRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.logoPreview {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--dash-segment-track);
+  border: 1px dashed var(--dash-dropzone-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.logoPreview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logoPreview span {
+  font-size: 0.6rem;
+  color: var(--dash-muted);
+  text-align: center;
+}
+
+.uploadLogoBtn {
+  background: transparent;
+  border: 1px solid var(--dash-border);
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--dash-heading);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.uploadLogoBtn:hover {
+  background-color: var(--dash-divider);
+}
+
+/* LOCATION */
+.locationGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.locationField {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.locationField input {
+  width: 100%;
+}
+
+.locationFieldLabel {
+  font-size: 0.66rem;
+  color: var(--dash-muted);
+}
+
+/* CONTACTS */
+.contactCard {
+  border: 1px solid var(--dash-frame-border);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.removeContactBtn {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  background: none;
+  border: none;
+  color: var(--dash-dropzone-border);
+  cursor: pointer;
+  padding: 2px;
+}
+
+.removeContactBtn:hover {
+  color: #dc2626;
+}
+
+.contactFieldLabel {
+  font-size: 0.64rem;
+  color: var(--dash-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.contactSplitRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.addContactBtn {
+  width: 100%;
+  background: transparent;
+  border: 1px dashed var(--dash-dropzone-border);
+  border-radius: 8px;
+  padding: 9px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--dash-muted);
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.addContactBtn:hover {
+  background-color: var(--dash-segment-track);
+  color: var(--dash-heading);
+}
+
+/* LISTA DE CLIENTES (tabela) */
+.clientsTableWrapper {
+  background: var(--dash-card-bg);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius);
+  box-shadow: var(--dash-card-shadow);
+  overflow-x: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.clientsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.clientsTable thead th {
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--dash-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: transparent;
+  border-bottom: 1px solid var(--dash-frame-border);
+  white-space: nowrap;
+}
+
+.clientsTable tbody tr:hover {
+  background-color: var(--dash-segment-track);
+}
+
+.clientsTable tbody tr:not(:last-child) td {
+  border-bottom: 1px solid var(--dash-frame-border);
+}
+
+.clientsTable td {
+  padding: 10px 16px;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: var(--dash-text);
+}
+
+.tableCellMuted {
+  color: var(--dash-muted);
+}
+
+.companyCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.avatarImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.emptyClientsRow {
+  text-align: center;
+  color: var(--dash-muted);
+  padding: 40px !important;
+  font-size: 0.9rem;
+}
+
+/* Estica a página até a margem de baixo do page-body */
+.containerFullHeight {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* PAGINAÇÃO */
+.paginationFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+  border-top: 1px solid var(--dash-frame-border);
+  margin-top: auto;
+}
+
+.pageNavBtn {
+  background: transparent;
+  border: 1px solid var(--dash-dropzone-border);
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--dash-text);
+  cursor: pointer;
+}
+
+.pageNavBtn:hover:not(:disabled) {
+  background-color: var(--dash-segment-track);
+}
+
+.pageNavBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 4px;
+}
+
+.pageNumberBtn {
+  background: none;
+  border: none;
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--dash-muted);
+  cursor: pointer;
+}
+
+.pageNumberBtn:hover {
+  background-color: var(--dash-segment-track);
+}
+
+.pageNumberBtnActive {
+  background-color: var(--dash-heading) !important;
+  color: #ffffff !important;
+}
+
+.totalRegisteredNote {
+  font-weight: 500;
+  color: var(--dash-muted);
 }

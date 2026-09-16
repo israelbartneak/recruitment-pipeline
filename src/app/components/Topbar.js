@@ -113,19 +113,18 @@ export default function Topbar({
   return (
     <header className="topbar-container">
       <style jsx>{`
-        .topbar-container {
+                .topbar-container {
           height: 70px;
-          background: var(--bg-card, white);
-          border-bottom: 1px solid var(--border-color, #e2e8f0);
+          background: #ffffff;
+          box-shadow: 0 2px 8px rgba(22, 56, 83, 0.08);
           display: flex;
           align-items: center;
           justify-content: space-between;
           padding: 0 32px;
           z-index: 50;
           width: 100%;
-          transition:
-            background-color 0.25s,
-            border-color 0.25s;
+          position: relative;
+          transition: background-color 0.25s;
         }
         .search-area {
           position: relative;
@@ -136,7 +135,7 @@ export default function Topbar({
         .search-input {
           width: 100%;
           height: 44px;
-          padding: 0 45px;
+          padding: 0 25px;
           border-radius: 12px;
           border: 1px solid ${isSearchFocused ? "#FE5102" : "#E2E8F0"};
           background: #f8fafc;
@@ -149,19 +148,7 @@ export default function Topbar({
             ? "0 0 0 3px rgba(254, 81, 2, 0.1)"
             : "none"};
         }
-        .ctrl-k-badge {
-          position: absolute;
-          right: 14px;
-          background: white;
-          border: 1px solid #e2e8f0;
-          border-radius: 6px;
-          padding: 3px 7px;
-          font-size: 10px;
-          font-weight: 800;
-          color: #94a3b8;
-          pointer-events: none;
-          display: ${isSearchFocused || searchQuery ? "none" : "block"};
-        }
+
         .right-actions {
           display: flex;
           align-items: center;
@@ -210,7 +197,7 @@ export default function Topbar({
           width: 1px;
           height: 24px;
           background: #e2e8f0;
-          margin: 0 2px;
+          margin: 0 0.5px 0 6px;
         }
 
         /* Perfil de Usuário */
@@ -218,7 +205,7 @@ export default function Topbar({
           display: flex;
           align-items: center;
           gap: 14px;
-          padding: 6px 6px 6px 15px;
+          padding: 3px;
           border-radius: 14px;
           cursor: pointer;
           transition: 0.2s;
@@ -311,7 +298,6 @@ export default function Topbar({
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setIsSearchFocused(true)}
         />
-        <div className="ctrl-k-badge">CTRL + K</div>
       </div>
 
       {/* Ações da Direita */}

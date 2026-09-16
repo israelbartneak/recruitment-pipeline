@@ -1,23 +1,48 @@
 "use client";
+
 import { useState } from "react";
 import Link from "next/link";
 import {
   SlidersHorizontal,
   RotateCcw,
-  UserPlus,
-  MoreVertical,
-  Mail,
-  Phone,
-  MapPin,
-  Globe,
-  Briefcase,
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
+
 import styles from "./candidates.module.css";
+import { mockCandidates } from "./mockCandidates";
+import { mockJobs } from "../jobs-board/mockJobs";
+import {
+  mockCandidateJobs,
+  PIPELINE_STAGES,
+} from "../jobs-board/mockCandidateJobs";
+
+function getLatestApplication(candidateId) {
+  const entries = mockCandidateJobs.filter(
+    (e) => e.candidateId === candidateId,
+  );
+
+  if (entries.length === 0) return null;
+
+  const latest = entries.reduce((a, b) =>
+    new Date(a.matchCreatedDate.split("/").reverse().join("-")) >
+    new Date(b.matchCreatedDate.split("/").reverse().join("-"))
+      ? a
+      : b,
+  );
+
+  const job = mockJobs.find((j) => j.id === latest.jobId);
+  const stage = PIPELINE_STAGES.find((s) => s.key === latest.stage);
+
+  return {
+    jobTitle: job ? job.title : "-",
+    stageLabel: stage ? stage.label : "-",
+    stageColor: stage ? stage.color : "#64748b",
+  };
+}
 
 export default function CandidatesPage() {
-  const [isFilterOpen, setIsFilterOpen] = useState(true);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const [filters, setFilters] = useState({
     name: "",
@@ -32,83 +57,20 @@ export default function CandidatesPage() {
     keywords: "",
   });
 
-  const [candidates] = useState([
-    {
-      id: "CAND-2026-001",
-      firstName: "Rodrigo",
-      lastName: "Carreirão",
-      city: "Curitiba",
-      state: "PR",
-      country: "Brazil",
-      phone: "+55 (41) 99999-1111",
-      email: "rodrigo.c@frontall.com",
-      appliedJob: "Product Management Consultant",
-      languages: ["Portuguese", "English"],
-      pastPositions: ["Product Owner", "Scrum Master"],
-      keywords: ["Agile", "Roadmap", "SaaS"],
-    },
-    {
-      id: "CAND-2026-002",
-      firstName: "Gustavo",
-      lastName: "Hammer",
-      city: "São Paulo",
-      state: "SP",
-      country: "Brazil",
-      phone: "+55 (11) 98888-2222",
-      email: "gustavo.h@outlook.com",
-      appliedJob: "SaaS IT Engineer",
-      languages: ["Portuguese", "English", "Spanish"],
-      pastPositions: ["Full Stack Developer", "DevOps"],
-      keywords: ["AI", "Integrations", "Cloud"],
-    },
-    {
-      id: "CAND-2026-003",
-      firstName: "Alexandre",
-      lastName: "Pinto",
-      gender: "Male",
-      city: "Belo Horizonte",
-      state: "MG",
-      country: "Brazil",
-      phone: "+55 (31) 97777-3333",
-      email: "alexandre.pinto@dev.io",
-      appliedJob: "Backend Web Developer",
-      languages: ["Portuguese", "English"],
-      pastPositions: ["Software Developer"],
-      keywords: ["Node.js", "MongoDB", "React"],
-    },
-    {
-      id: "CAND-2026-004",
-      firstName: "Alexandre",
-      lastName: "Valença",
-      city: "Florianópolis",
-      state: "SC",
-      country: "Brazil",
-      phone: "+55 (48) 96666-4444",
-      email: "alexandre.v@sistemas.com.br",
-      appliedJob: "Full Stack Developer",
-      languages: ["Portuguese"],
-      pastPositions: ["Backend Developer"],
-      keywords: ["TypeScript", "Express", "SQL"],
-    },
-    {
-      id: "CAND-2026-005",
-      firstName: "John",
-      lastName: "Doe",
-      city: "Miami",
-      state: "FL",
-      country: "United States",
-      phone: "+1 (305) 555-0199",
-      email: "john.doe@techrec.com",
-      appliedJob: "Backend Web Developer",
-      languages: ["English"],
-      pastPositions: ["Software Engineer"],
-      keywords: ["Next.js", "MongoDB", "TypeScript"],
-    },
-  ]);
+  const [candidates] = useState(mockCandidates);
+
+  const CANDIDATES_PER_PAGE = 5;
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFilters((prev) => ({ ...prev, [name]: value }));
+
+    setFilters((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    setCurrentPage(1);
   };
 
   const handleClearFilters = () => {
@@ -124,16 +86,20 @@ export default function CandidatesPage() {
       pastPositions: "",
       keywords: "",
     });
+
+    setCurrentPage(1);
   };
 
   const filteredCandidates = candidates.filter((cand) => {
     const checkMatch = (field, filterValue) => {
       if (!filterValue) return true;
+
       if (Array.isArray(field)) {
         return field.some((item) =>
           item.toLowerCase().includes(filterValue.toLowerCase()),
         );
       }
+
       return field?.toLowerCase().includes(filterValue.toLowerCase());
     };
 
@@ -153,26 +119,31 @@ export default function CandidatesPage() {
     );
   });
 
-  // Função auxiliar para gerar o slug da URL limpo sem acentos
-  const generateSlug = (firstName, lastName) => {
-    return `${firstName}-${lastName}`
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/\s+/g, "-");
-  };
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredCandidates.length / CANDIDATES_PER_PAGE),
+  );
+
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+
+  const startIndex = (safeCurrentPage - 1) * CANDIDATES_PER_PAGE;
+
+  const paginatedCandidates = filteredCandidates.slice(
+    startIndex,
+    startIndex + CANDIDATES_PER_PAGE,
+  );
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles.containerFullHeight}`}>
       <header className={styles.header}>
-        <div className={styles.titleArea}>
+        <div>
           <h1>Candidates</h1>
-          <span className={styles.totalBadge}>
-            {candidates.length} talents in database
-          </span>
+          <div className={styles.accentLine}></div>
         </div>
+
         <button className={styles.addBtn}>
-          <UserPlus size={16} /> Add Candidate
+          <span className={styles.addBtnPlus}>+</span>
+          Add Candidate
         </button>
       </header>
 
@@ -185,14 +156,21 @@ export default function CandidatesPage() {
           </div>
 
           <div className={styles.headerActions}>
-            <button className={styles.clearBtn} onClick={handleClearFilters}>
-              <RotateCcw size={14} /> Clear Filters
+            <button
+              className={styles.clearBtn}
+              onClick={handleClearFilters}
+            >
+              <RotateCcw size={14} />
+              Clear Filters
             </button>
+
             <button
               className={styles.toggleAccordionBtn}
               onClick={() => setIsFilterOpen(!isFilterOpen)}
               title={
-                isFilterOpen ? "Collapse search panel" : "Expand search panel"
+                isFilterOpen
+                  ? "Collapse search panel"
+                  : "Expand search panel"
               }
             >
               {isFilterOpen ? (
@@ -206,8 +184,12 @@ export default function CandidatesPage() {
 
         {isFilterOpen && (
           <div className={styles.filterGrid}>
-            <div className={styles.inputGroup} style={{ gridColumn: "span 2" }}>
+            <div
+              className={styles.inputGroup}
+              style={{ gridColumn: "span 2" }}
+            >
               <label>Candidate Name</label>
+
               <input
                 type="text"
                 name="name"
@@ -216,8 +198,10 @@ export default function CandidatesPage() {
                 placeholder="e.g. Rodrigo Carreirão"
               />
             </div>
+
             <div className={styles.inputGroup}>
               <label>Country</label>
+
               <input
                 type="text"
                 name="country"
@@ -226,8 +210,10 @@ export default function CandidatesPage() {
                 placeholder="e.g. Brazil"
               />
             </div>
+
             <div className={styles.inputGroup}>
               <label>State</label>
+
               <input
                 type="text"
                 name="state"
@@ -237,8 +223,12 @@ export default function CandidatesPage() {
               />
             </div>
 
-            <div className={styles.inputGroup} style={{ gridColumn: "span 2" }}>
+            <div
+              className={styles.inputGroup}
+              style={{ gridColumn: "span 2" }}
+            >
               <label>City</label>
+
               <input
                 type="text"
                 name="city"
@@ -247,8 +237,13 @@ export default function CandidatesPage() {
                 placeholder="e.g. Curitiba"
               />
             </div>
-            <div className={styles.inputGroup} style={{ gridColumn: "span 2" }}>
+
+            <div
+              className={styles.inputGroup}
+              style={{ gridColumn: "span 2" }}
+            >
               <label>Job / Process Applied</label>
+
               <input
                 type="text"
                 name="appliedJob"
@@ -258,8 +253,12 @@ export default function CandidatesPage() {
               />
             </div>
 
-            <div className={styles.inputGroup} style={{ gridColumn: "span 2" }}>
+            <div
+              className={styles.inputGroup}
+              style={{ gridColumn: "span 2" }}
+            >
               <label>Keywords</label>
+
               <input
                 type="text"
                 name="keywords"
@@ -268,8 +267,13 @@ export default function CandidatesPage() {
                 placeholder="e.g. Next.js, AI, SaaS"
               />
             </div>
-            <div className={styles.inputGroup} style={{ gridColumn: "span 2" }}>
+
+            <div
+              className={styles.inputGroup}
+              style={{ gridColumn: "span 2" }}
+            >
               <label>Past Work Positions</label>
+
               <input
                 type="text"
                 name="pastPositions"
@@ -281,6 +285,7 @@ export default function CandidatesPage() {
 
             <div className={styles.inputGroup}>
               <label>Languages</label>
+
               <input
                 type="text"
                 name="languages"
@@ -289,8 +294,10 @@ export default function CandidatesPage() {
                 placeholder="e.g. English"
               />
             </div>
+
             <div className={styles.inputGroup}>
               <label>Phone Number</label>
+
               <input
                 type="text"
                 name="phone"
@@ -299,8 +306,13 @@ export default function CandidatesPage() {
                 placeholder="e.g. +55 (41)"
               />
             </div>
-            <div className={styles.inputGroup} style={{ gridColumn: "span 2" }}>
+
+            <div
+              className={styles.inputGroup}
+              style={{ gridColumn: "span 2" }}
+            >
               <label>Email Address</label>
+
               <input
                 type="text"
                 name="email"
@@ -315,99 +327,207 @@ export default function CandidatesPage() {
 
       {/* Results Table */}
       <h3 className={styles.resultsTitle}>
-        Candidates Found ({filteredCandidates.length})
+        Candidates Found ({filteredCandidates.length}){" "}
+        <span className={styles.totalRegisteredNote}>
+          ({candidates.length} total in database)
+        </span>
       </h3>
 
       <section className={styles.tableWrapper}>
         <table className={styles.listTable}>
+          <colgroup>
+            <col style={{ width: "3%" }} />
+            <col style={{ width: "12%" }} />
+            <col style={{ width: "7%" }} />
+            <col style={{ width: "10%" }} />
+            <col style={{ width: "11%" }} />
+            <col style={{ width: "8%" }} />
+            <col style={{ width: "8%" }} />
+            <col style={{ width: "8%" }} />
+            <col style={{ width: "10%" }} />
+            <col style={{ width: "7%" }} />
+            <col style={{ width: "8%" }} />
+            <col style={{ width: "8%" }} />
+          </colgroup>
+
           <thead>
             <tr>
-              <th style={{ width: "130px" }}>SYSTEM ID</th>
-              <th style={{ width: "180px" }}>CANDIDATE</th>
-              <th style={{ width: "220px" }}>LOCATION</th>
-              <th style={{ width: "220px" }}>JOB / PROCESS</th>
-              <th>HISTORY</th>
-              <th style={{ width: "180px" }}>LANGUAGES</th>
-              <th style={{ width: "200px" }}>CONTACTS</th>
-              <th className={styles.actionsColumn}></th>
+              <th>ID</th>
+              <th>CANDIDATE NAME</th>
+              <th>LOCATION</th>
+              <th>CURRENT POSITION</th>
+              <th>APPLICATION</th>
+              <th>STATUS</th>
+              <th>LANGUAGES</th>
+              <th>PHONE</th>
+              <th>EMAIL</th>
+              <th>SOURCE</th>
+              <th>CREATED BY</th>
+              <th>CREATED DATE</th>
             </tr>
           </thead>
+
           <tbody>
-            {filteredCandidates.length > 0 ? (
-              filteredCandidates.map((cand) => (
-                <tr key={cand.id}>
-                  <td className={styles.idCell}>{cand.id}</td>
-                  <td className={styles.primaryText}>
-                    <Link
-                      href={`/candidates/${generateSlug(
-                        cand.firstName,
-                        cand.lastName,
-                      )}`}
-                      className={styles.candidateNameLink}
-                    >
-                      {cand.firstName} {cand.lastName}
-                    </Link>
-                  </td>
+            {paginatedCandidates.length > 0 ? (
+              paginatedCandidates.map((cand, index) => {
+                const application = getLatestApplication(cand.id);
 
-                  <td>
-                    <div className={styles.cellItem}>
-                      <MapPin size={13} className={styles.cellIcon} />
-                      <span>
-                        {cand.city}, {cand.state} - {cand.country}
-                      </span>
-                    </div>
-                  </td>
+                return (
+                  <tr key={cand.id}>
+                    <td className={styles.truncateCell}>
+                      {startIndex + index + 1}
+                    </td>
 
-                  <td>
-                    <div className={styles.jobItem}>
-                      <Briefcase size={13} className={styles.cellIcon} />
-                      <span>{cand.appliedJob}</span>
-                    </div>
-                  </td>
-
-                  <td className={styles.historyCell}>
-                    {cand.pastPositions.join(", ")}
-                  </td>
-
-                  <td>
-                    <div className={styles.cellItem}>
-                      <Globe size={13} className={styles.cellIcon} />
-                      <span>{cand.languages.join(", ")}</span>
-                    </div>
-                  </td>
-
-                  <td>
-                    <div className={styles.contactGroup}>
-                      <div className={styles.cellItem}>
-                        <Phone size={11} className={styles.cellIcon} />{" "}
-                        {cand.phone}
-                      </div>
-                      <div
-                        className={styles.cellItem}
-                        style={{ marginTop: "3px" }}
+                    <td className={styles.truncateCell}>
+                      <Link
+                        href={`/candidates/${cand.id}`}
+                        className={styles.candidateNameCell}
                       >
-                        <Mail size={11} className={styles.cellIcon} />{" "}
-                        {cand.email}
-                      </div>
-                    </div>
-                  </td>
+                        <img
+                          src={cand.photoUrl}
+                          alt={`${cand.firstName} ${cand.lastName}`}
+                          className={styles.candidateThumb}
+                        />
 
-                  <td className={styles.actionsColumn}>
-                    <button className={styles.actionRowBtn}>
-                      <MoreVertical size={14} />
-                    </button>
-                  </td>
-                </tr>
-              ))
+                        <span>
+                          {cand.firstName} {cand.lastName}
+                        </span>
+                      </Link>
+                    </td>
+
+                    <td
+                      className={styles.truncateCell}
+                      title={`${cand.city}, ${cand.state}`}
+                    >
+                      {cand.city}, {cand.state}
+                    </td>
+
+                    <td
+                      className={styles.truncateCell}
+                      title={cand.currentPosition}
+                    >
+                      {cand.currentPosition || "-"}
+                    </td>
+
+                    <td
+                      className={`${styles.truncateCell} ${styles.applicationCell}`}
+                      title={
+                        application
+                          ? application.jobTitle
+                          : cand.appliedJob
+                      }
+                    >
+                      {application
+                        ? application.jobTitle
+                        : cand.appliedJob}
+                    </td>
+
+                    <td className={styles.truncateCell}>
+                      {application ? (
+                        <span
+                          className={styles.statusBadgeSmall}
+                          style={{
+                            color: application.stageColor,
+                            backgroundColor: `${application.stageColor}1A`,
+                          }}
+                        >
+                          {application.stageLabel}
+                        </span>
+                      ) : (
+                        "-"
+                      )}
+                    </td>
+
+                    <td
+                      className={styles.truncateCell}
+                      title={cand.languages.join(", ")}
+                    >
+                      {cand.languages.join(", ")}
+                    </td>
+
+                    <td
+                      className={styles.truncateCell}
+                      title={cand.phone}
+                    >
+                      {cand.phone}
+                    </td>
+
+                    <td
+                      className={styles.truncateCell}
+                      title={cand.email}
+                    >
+                      {cand.email}
+                    </td>
+
+                    <td className={styles.truncateCell}>
+                      {cand.source || "-"}
+                    </td>
+
+                    <td className={styles.truncateCell}>
+                      {cand.createdBy || "-"}
+                    </td>
+
+                    <td className={styles.truncateCell}>
+                      {cand.createdDate}
+                    </td>
+                  </tr>
+                );
+              })
             ) : (
               <tr>
-                <td colSpan="8" className={styles.emptyState}>
+                <td
+                  colSpan="12"
+                  className={styles.emptyState}
+                >
                   No candidates found matching the selected criteria.
                 </td>
               </tr>
             )}
           </tbody>
         </table>
+
+        <div className={styles.paginationFooter}>
+          <button
+            className={styles.pageNavBtn}
+            onClick={() =>
+              setCurrentPage((p) => Math.max(1, p - 1))
+            }
+            disabled={safeCurrentPage === 1}
+          >
+            Previous
+          </button>
+
+          <div className={styles.pageNumbers}>
+            {Array.from(
+              { length: totalPages },
+              (_, i) => i + 1,
+            ).map((page) => (
+              <button
+                key={page}
+                className={`${styles.pageNumberBtn} ${
+                  page === safeCurrentPage
+                    ? styles.pageNumberBtnActive
+                    : ""
+                }`}
+                onClick={() => setCurrentPage(page)}
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+
+          <button
+            className={styles.pageNavBtn}
+            onClick={() =>
+              setCurrentPage((p) =>
+                Math.min(totalPages, p + 1),
+              )
+            }
+            disabled={safeCurrentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
       </section>
     </div>
   );
